@@ -3,6 +3,7 @@
 from subprocess import check_output
 from datetime import date
 import re
+import glob
 
 def info(str):
    print "[INFO] %s" % str
@@ -43,8 +44,18 @@ def generate_change_log(repodir):
 
     f_name = 'ChangeLogs_%s.txt' % date.today().isoformat()
     output_change_log(f_name, change_log)
+    return output_change_log
+    
 
-
+def grep_change_log_file(files):
+	files = glob.glob("*.txt")
+		
+	for line in open(files[0], 'r'):
+	  if re.findall(r"(Story)|(Bug)", line):
+	    print line
+	  
+	
+ 
 
 if __name__ == '__main__':
-  generate_change_log('.')
+  grep_change_log_file('.')
