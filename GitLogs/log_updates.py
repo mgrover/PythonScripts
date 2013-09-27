@@ -56,8 +56,9 @@ def generate_change_log(repodir):
 def grep_change_log_file():
     files = glob.glob("*.txt")
     for line in open(files[0], 'r'):
-        if re.findall(r"(?i)Story|(?i)Stories|(?i)Bug|(?i)Regression|(?i)QA|(?i)Hygiene", line):
+        if re.findall(r"(?i)Story|(?i)Stories|(?i)Bug|(?i)Regression|(?i)QA|(?i)Hygiene|(?i)Dependency", line):
             print line
+
 
 if __name__ == '__main__':
     generate_change_log('.')
